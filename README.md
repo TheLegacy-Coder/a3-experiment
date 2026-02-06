@@ -8,12 +8,13 @@ Potential data source: https://www.ncei.noaa.gov/access/monitoring/climate-at-a-
 Potential reference for average estimation theory: https://vispubs.com/?searchText=biased+average&paper=10.1109/TVCG.2019.2934400
 
 Graph ideas:
-1. Two bar charts, containing average temperature for each month of each year
-2. Two line charts, same info
-3. Two radial charts, same info
+1. Two bar charts, containing average temperature for each month of each year (Klaudio)
+2. Two line charts, same info (Klaudio)
+3. Two radial charts, same info (Ethan)
 
 Tech achievements:
 1. An additional 3 charts that each feature data from both years (combined)
+    - Same distribution as above
 
 ===
 
