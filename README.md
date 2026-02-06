@@ -1,6 +1,20 @@
 Assignment 3 - Replicating a Classic Experiment  
 ===
 
+Idea for A3: Seeing if people can accurately interpret change in temperatures for two particular month in two distinct years (i.e. November and December for both 1800 and 2026).
+
+Potential data source: https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/national/time-series/110/tavg/3/8/1895-2023?base_prd=true&begbaseyear=1901&endbaseyear=2000&trend=true&trend_base=100&begtrendyear=1895&endtrendyear=2023
+
+Graph ideas:
+1. Two bar charts, containing average temperature for each month of each year
+2. Two line charts, same info
+3. Two radial charts, same info
+
+Tech achievements:
+1. An additional 3 charts that each feature data from both years (combined)
+
+===
+
 For the scope of this project, assume the role of a scientist who runs experiments for a living.
 
 For example: 
