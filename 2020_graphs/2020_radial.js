@@ -10,7 +10,15 @@ for (let i = 0; i < parsedData.length; i++) {
     parsedData[i].Value = parseFloat(parsedData[i].Value);
 };
 
-console.log(parsedData);
+//console.log(parsedData);
+
+// Radial chart reference: https://observablehq.com/@d3/radial-stacked-bar-chart/2
+
+  // An angular x-scale
+const x = d3.scaleBand()
+    .domain(data.map(d => d.Date))
+    .range([0, 2 * Math.PI])
+    .align(0);
 
 document.onload = () => {
     const radialContainer2020 = d3.select("#2020_radial");
