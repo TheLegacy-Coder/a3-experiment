@@ -12,7 +12,7 @@ for (let i = 0; i < parsedData.length; i++) {
 
 console.log(parsedData);
 
-// Radial chart reference: https://observablehq.com/@d3/radial-stacked-bar-chart/2
+// Radial chart reference: https://d3-graph-gallery.com/graph/circular_barplot_label.html
 
 document.onload = () => {
     const radialContainer1900 = d3.select("#1900_radial");

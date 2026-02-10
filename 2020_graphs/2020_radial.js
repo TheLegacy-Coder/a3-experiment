@@ -12,14 +12,15 @@ for (let i = 0; i < parsedData.length; i++) {
 
 //console.log(parsedData);
 
-// Radial chart reference: https://observablehq.com/@d3/radial-stacked-bar-chart/2
-
-  // An angular x-scale
-const x = d3.scaleBand()
-    .domain(data.map(d => d.Date))
-    .range([0, 2 * Math.PI])
-    .align(0);
+// Radial chart reference: https://d3-graph-gallery.com/graph/circular_barplot_label.html
 
 document.onload = () => {
-    const radialContainer2020 = d3.select("#2020_radial");
+    const radialContainer2020 = d3.select("#2020_radial")
+
+    const x = d3.scaleBand()
+      .range([0, 2 * Math.PI])   
+      .align(0)                  
+      .domain(data.map(function(d) { return d.Month; }));
+    
+
 }
