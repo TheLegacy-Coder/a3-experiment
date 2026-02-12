@@ -1,7 +1,7 @@
 Assignment 3 - Replicating a Classic Experiment  
 ===
 
-Idea for A3: Seeing if people can accurately estimate the average temperatures for two distinct years across different chart types (bar, line, and radial). Charts will include monthly average temperature for a given year.
+Idea for A3: Seeing if people can accurately estimate which chart (representing two distinct years) for each type has the highest average temperature. The different chart types include bar, line, and radial. Each chart will include monthly average temperature for its corresponding year.
 
 Data source: https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/national/time-series/110/tavg/3/8/1895-2023?base_prd=true&begbaseyear=1901&endbaseyear=2000&trend=true&trend_base=100&begtrendyear=1895&endtrendyear=2023
 

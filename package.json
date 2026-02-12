@@ -1,0 +1,26 @@
+{
+  "name": "a3-experiment",
+  "version": "1.0.0",
+  "description": "Assignment 3 - Replicating a Classic Experiment   ===",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheLegacy-Coder/a3-experiment.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/TheLegacy-Coder/a3-experiment/issues"
+  },
+  "homepage": "https://github.com/TheLegacy-Coder/a3-experiment#readme",
+  "dependencies": {
+    "dotenv": "^17.2.4",
+    "express": "^5.2.1",
+    "mongodb": "^7.1.0"
+  }
+}
