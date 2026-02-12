@@ -113,6 +113,6 @@ radialContainer2020.append("g")
     })
 
 radialContainer2020.append("text")
-    .text("Average Monthly Temperature (2020)")
+    .text("Average Monthly Temperature")
     .attr("x", 250)
     .attr("y", 15)

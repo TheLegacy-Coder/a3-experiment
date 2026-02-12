@@ -113,6 +113,6 @@ radialContainer1900.append("g")
     })
 
 radialContainer1900.append("text")
-    .text("Average Monthly Temperature (1900)")
+    .text("Average Monthly Temperature")
     .attr("x", 250)
     .attr("y", 15)

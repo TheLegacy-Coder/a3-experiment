@@ -68,4 +68,4 @@ barContainer1900SVG.append("text")
 barContainer1900SVG.append("text")
     .attr("x", 175)
     .attr("y", -20)
-    .text("Average Monthly Temperature (1900)");
+    .text("Average Monthly Temperature");

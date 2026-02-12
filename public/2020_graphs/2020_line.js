@@ -66,4 +66,4 @@ lineContainer2020SVG.append("text")
 lineContainer2020SVG.append("text")
     .attr("x", 175)
     .attr("y", -20)
-    .text("Average Monthly Temperature (2020)");
+    .text("Average Monthly Temperature");
