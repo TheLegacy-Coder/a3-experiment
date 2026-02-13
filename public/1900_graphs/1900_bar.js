@@ -12,60 +12,74 @@ for (let i = 0; i < parsedData.length; i++) {
 
 console.log(parsedData);
 
-// Main reference for creating the bar chart: https://d3-graph-gallery.com/graph/barplot_basic.html
-const barContainer1900SVG = d3.select("#bar_1900")
-    .append("svg")
-        .attr("width", 800)
-        .attr("height", 800)
-    .append("g")
-        .attr("transform", "translate(100, 100)");
+const defaultColor = "#42903c";
 
-const xAxis = d3.scaleBand()
-    .domain(parsedData.map(function(singleDataObject) {
-        return singleDataObject.Month;
-    }))
-    .range([0, 500]);
-barContainer1900SVG.append("g")
-    .attr("transform", "translate(0, 500)")
-    .call(d3.axisBottom(xAxis))
-    .selectAll("text")
-        .attr("transform", "translate(-5, 0) rotate(-30)")
-        .style("text-anchor", "end");
+function renderSVG(color) {
+    
+    const singleSVGSelect = d3.select("#bar_1900");
+    singleSVGSelect.selectAll("svg").remove();
 
-const yAxis = d3.scaleLinear()
-    .domain([30, 75])
-    .range([500, 0]);
-barContainer1900SVG.append("g")
-    .call(d3.axisLeft(yAxis));
+    // Main reference for creating the bar chart: https://d3-graph-gallery.com/graph/barplot_basic.html
+    const barContainer1900SVG = d3.select("#bar_1900")
+        .append("svg")
+            .attr("width", 800)
+            .attr("height", 800)
+        .append("g")
+            .attr("transform", "translate(100, 100)");
 
-barContainer1900SVG.selectAll("rect")
-    .data(parsedData)
-    .enter()
-    .append("rect")
-        .attr("x", function(singleDataObject) {
-            return xAxis(singleDataObject.Month);
-        })
-        .attr("y", function(singleDataObject) {
-            return yAxis(singleDataObject.Value);
-        })
-        .attr("width", xAxis.bandwidth())
-        .attr("height", function(singleDataObject) {
-            return 500 - yAxis(singleDataObject.Value);
-        })
-        .attr("fill", "#42903c")
-        .attr("stroke", "black");
+    const xAxis = d3.scaleBand()
+        .domain(parsedData.map(function(singleDataObject) {
+            return singleDataObject.Month;
+        }))
+        .range([0, 500]);
+    barContainer1900SVG.append("g")
+        .attr("transform", "translate(0, 500)")
+        .call(d3.axisBottom(xAxis))
+        .selectAll("text")
+            .attr("transform", "translate(-5, 0) rotate(-30)")
+            .style("text-anchor", "end");
 
-// Referred to https://d3-graph-gallery.com/graph/custom_axis.html#axistitles for creating both the x-axis and y-axis labels (technically also the title of the chart)
-barContainer1900SVG.append("text")
-    .attr("x", 225)
-    .attr("y", 575)
-    .text("Month");
-barContainer1900SVG.append("text")
-    .attr("transform", "rotate(-90)")
-    .attr("x", -400)
-    .attr("y", -50)
-    .text("Average Temperature in Deg. Fahrenheit");
-barContainer1900SVG.append("text")
-    .attr("x", 175)
-    .attr("y", -20)
-    .text("Average Monthly Temperature");
+    const yAxis = d3.scaleLinear()
+        .domain([30, 75])
+        .range([500, 0]);
+    barContainer1900SVG.append("g")
+        .call(d3.axisLeft(yAxis));
+
+    barContainer1900SVG.selectAll("rect")
+        .data(parsedData)
+        .enter()
+        .append("rect")
+            .attr("x", function(singleDataObject) {
+                return xAxis(singleDataObject.Month);
+            })
+            .attr("y", function(singleDataObject) {
+                return yAxis(singleDataObject.Value);
+            })
+            .attr("width", xAxis.bandwidth())
+            .attr("height", function(singleDataObject) {
+                return 500 - yAxis(singleDataObject.Value);
+            })
+            .attr("fill", color)
+            .attr("stroke", "black");
+
+    // Referred to https://d3-graph-gallery.com/graph/custom_axis.html#axistitles for creating both the x-axis and y-axis labels (technically also the title of the chart)
+    barContainer1900SVG.append("text")
+        .attr("x", 225)
+        .attr("y", 575)
+        .text("Month");
+    barContainer1900SVG.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("x", -400)
+        .attr("y", -50)
+        .text("Average Temperature in Deg. Fahrenheit");
+    barContainer1900SVG.append("text")
+        .attr("x", 175)
+        .attr("y", -20)
+        .text("Average Monthly Temperature");
+
+};
+
+window.onload = renderSVG(defaultColor);
+document.getElementById("bar_1900_color").onchange = function () {
+    renderSVG(document.getElementById("bar_1900_color").value);
+};
