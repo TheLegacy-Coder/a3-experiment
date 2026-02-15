@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<form action="/submit" method="POST">
+    <div>
+        <h1 class="intro_title">Klaudio Fusha and Ethan Shanbaum - Temperature Average Estimation</h1>
+        <p class="intro_blurb">For this experiment, you will be tasked to estimate which chart (representing two distinct years) in a given pair has the highest average temperature. The different chart types include bar, line, and radial. Each chart will include monthly average temperature for its corresponding year.</p>
+    </div>
+    
+    <div id="bar_1918" class="left chart"></div>
+    <div id="bar_2002" class="right chart"></div>
+    <input id="bar_1918_color" type="color" class="left">
+    <input id="bar_2002_color" type="color" class="right">
+    <div class="input">
+        <label>Which bar chart has the highest yearly average temperature?</label>
+        <select name="bar_comparison">
+            <option value="Select">Select</option>
+            <option value="Left">Left</option>
+            <option value="Right">Right</option>
+        </select>
+    </div>
+    <hr>
+
+    <div id="line_1918" class="left chart"></div>
+    <div id="line_2002" class="right chart"></div>
+    <input id="line_1918_color" type="color" class="left">
+    <input id="line_2002_color" type="color" class="right">
+    <div class="input">
+        <label>Which line chart has the highest yearly average temperature?</label>
+        <select name="line_comparison">
+            <option value="Select">Select</option>
+            <option value="Left">Left</option>
+            <option value="Right">Right</option>
+        </select>
+    </div>
+    <hr>
+    
+    <div id="radial_1918" class="left chart"></div>
+    <div id="radial_2002" class="right chart"></div>
+    <input id="radial_1918_color" type="color" class="left">
+    <input id="radial_2002_color" type="color" class="right">
+    <div class="input">
+        <label>Which radial chart has the highest yearly average temperature?</label>
+        <select name="radial_comparison">
+            <option value="Select">Select</option>
+            <option value="Left">Left</option>
+            <option value="Right">Right</option>
+        </select>
+    </div>
+    <hr>
+
+    <div class="button">
+        <button type="submit">Submit Answers</button>
+    </div>
+</form>
+
+<style>
+    .intro_title {
+        font-weight: 800;
+        font-size: 40px;
+        text-align: center;
+    }
+    
+    .intro_blurb {
+        font-weight: 600;
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .chart {
+        width: 49%;
+    }
+
+    .left {
+        float: left;
+    }
+
+    .right {
+        float: right;
+    }
+
+    .input {
+        width: 100%;
+        clear: both;
+        text-align: center;
+    }
+
+    .button {
+        text-align: center;
+    }
+</style>
+
+<script type="module">
+
+import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+
+console.log(d3);
+
+</script>
+
+<script src="1918_graphs/1918_bar.js" type="module"></script>
+<script src="1918_graphs/1918_line.js" type="module"></script>
+<script src="1918_graphs/1918_radial.js" type="module"></script>
+
+<script src="2002_graphs/2002_bar.js" type="module"></script>
+<script src="2002_graphs/2002_line.js" type="module"></script>
+<script src="2002_graphs/2002_radial.js" type="module"></script>
