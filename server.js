@@ -20,7 +20,13 @@ let db = client.db("formDB");
 
 app.post("/submit", async (req, res) => {
     await db.collection("forms").insertOne(req.body);
-    res.send("Successful Submission! Thank you for participating in our experiment!");
+    let barComparisonResult = req.body.bar_comparison === "Right" ? 1 : 0;
+    let lineComparisonResult = req.body.line_comparison === "Right" ? 1 : 0;
+    let radialComparisonResult = req.body.radial_comparison === "Right" ? 1 : 0;
+    res.send(`
+        Successful Submission! Thank you for participating in our experiment!\n\n
+        Your score: ${(barComparisonResult + lineComparisonResult + radialComparisonResult)*100 / 3}%
+    `);
 })
 
 app.listen(3000, () => {

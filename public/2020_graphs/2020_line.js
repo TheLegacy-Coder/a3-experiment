@@ -10,8 +10,6 @@ for (let i = 0; i < parsedData.length; i++) {
     parsedData[i].Value = parseFloat(parsedData[i].Value);
 };
 
-console.log(parsedData);
-
 const defaultColor = "#9b16c0";
 
 function renderSVG(color) {
