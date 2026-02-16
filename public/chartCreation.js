@@ -4,6 +4,8 @@ import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 let year1Color = "#42903c";
 let year2Color = "#9b16c0";
 
+let year1 = document.getElementById("year1").value;
+let year2 = document.getElementById("year2").value;
 
 // Render the bar chart
 const renderBarChart = (color, year, data) => {
@@ -268,12 +270,35 @@ const createCharts = async (year1, year2) => {
     renderLineChart(year2Color, year2, year2Data);
     renderRadialChart(year1Color, year1, year1Data);
     renderRadialChart(year2Color, year2, year2Data);
+
+    document.getElementById(`bar_${year1}_color`).onchange = function () {
+        renderBarChart(document.getElementById(`bar_${year1}_color`).value, year1, year1Data)
+    };
+
+    document.getElementById(`bar_${year2}_color`).onchange = function () {
+        renderBarChart(document.getElementById(`bar_${year2}_color`).value, year2, year2Data)
+    };
+
+    document.getElementById(`line_${year1}_color`).onchange = function () {
+        renderLineChart(document.getElementById(`line_${year1}_color`).value, year1, year1Data)
+    };
+
+    document.getElementById(`line_${year2}_color`).onchange = function () {
+        renderLineChart(document.getElementById(`line_${year2}_color`).value, year2, year2Data)
+    };
+
+    document.getElementById(`radial_${year1}_color`).onchange = function () {
+        renderRadialChart(document.getElementById(`radial_${year1}_color`).value, year1, year1Data)
+    };
+
+    document.getElementById(`radial_${year2}_color`).onchange = function () {
+        renderRadialChart(document.getElementById(`radial_${year2}_color`).value, year2, year2Data)
+    };
+
+
 }
 
 
 window.onload = () => {
-    let year1 = document.getElementById("year1").value;
-    let year2 = document.getElementById("year2").value;
-
-    createCharts(year1, year2)
+    createCharts(year1, year2);
 }
