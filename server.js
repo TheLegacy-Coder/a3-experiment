@@ -21,11 +21,13 @@ let db = client.db("formDB");
 app.post("/submit", async (req, res) => {
     const nextPage = req.body.next_page;
     delete req.body.next_page;
+    console.log(req.body)
     await db.collection("forms").insertOne(req.body);
     
     if (nextPage) {
         res.redirect(nextPage);
     } else {
+        // Change this
         let barComparisonResult = req.body.bar_comparison === "Right" ? 1 : 0;
         let lineComparisonResult = req.body.line_comparison === "Right" ? 1 : 0;
         let radialComparisonResult = req.body.radial_comparison === "Right" ? 1 : 0;
