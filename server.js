@@ -1,5 +1,5 @@
 import express from "express";
-import { MongoClient } from "mongodb";
+import { MongoClient, ObjectId, Timestamp } from "mongodb";
 import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -16,6 +16,8 @@ app.use(express.static(path.join(__dirname, "public")));
 let client = new MongoClient(process.env.URI);
 await client.connect();
 let db = client.db("formDB");
+
+let userId = new ObjectId();
 
 // Correct Answers (used for calculating percentage correct at end of trial)
 let correctAnswers = {
@@ -103,6 +105,7 @@ app.post("/submit", async (req, res) => {
     delete req.body.next_page;
     req.body.year1Avg = averages[req.body.year1];
     req.body.year2Avg = averages[req.body.year2];
+    req.body.user_id = userId;
 
     let barCorrect = req.body.bar_comparison === correctAnswers[req.body.year1];
     let lineCorrect = req.body.line_comparison === correctAnswers[req.body.year1];
