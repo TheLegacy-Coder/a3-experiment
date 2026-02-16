@@ -4,6 +4,8 @@
         <h1 class="intro_title">Klaudio Fusha and Ethan Shanbaum - Temperature Average Estimation</h1>
         <p class="intro_blurb">For this experiment, you will be tasked to estimate which chart (representing two distinct years) in a given pair has the highest average temperature. The different chart types include bar, line, and radial. Each chart will include monthly average temperature for its corresponding year.</p>
     </div>
+    <input type="hidden" id="year1" value="1900"/>
+    <input type="hidden" id="year2" value="2020"/>
     
     <div id="bar_1900" class="left chart"></div>
     <div id="bar_2020" class="right chart"></div>
@@ -96,10 +98,4 @@ console.log(d3);
 
 </script>
 
-<script src="1900_graphs/1900_bar.js" type="module"></script>
-<script src="1900_graphs/1900_line.js" type="module"></script>
-<script src="1900_graphs/1900_radial.js" type="module"></script>
-
-<script src="2020_graphs/2020_bar.js" type="module"></script>
-<script src="2020_graphs/2020_line.js" type="module"></script>
-<script src="2020_graphs/2020_radial.js" type="module"></script>
+<script src="chartCreation.js" type="module"></script>
