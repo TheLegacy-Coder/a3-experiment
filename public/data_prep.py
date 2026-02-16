@@ -33,6 +33,7 @@ yearsList = [1900, 1902, 1904, 1906, 1908, 1910, 1912, 1914, 1916, 1918, 1920, 1
 
 for singleYear in yearsList:
     filteredByYear = read1900To2020Data[read1900To2020Data["Year"] == singleYear]
-    print(filteredByYear)
+    # print(filteredByYear["Year"])
+    # print(filteredByYear["Value"].mean())
     print("\n\n")
     filteredByYear.to_csv(f"public/csvFiles/temperature_data_{singleYear}.csv")
