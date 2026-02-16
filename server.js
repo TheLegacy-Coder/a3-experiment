@@ -19,14 +19,21 @@ let db = client.db("formDB");
 
 
 app.post("/submit", async (req, res) => {
+    const nextPage = req.body.next_page;
+    delete req.body.next_page;
     await db.collection("forms").insertOne(req.body);
-    let barComparisonResult = req.body.bar_comparison === "Right" ? 1 : 0;
-    let lineComparisonResult = req.body.line_comparison === "Right" ? 1 : 0;
-    let radialComparisonResult = req.body.radial_comparison === "Right" ? 1 : 0;
-    res.send(`
-        Successful Submission! Thank you for participating in our experiment!\n\n
-        Your score: ${(barComparisonResult + lineComparisonResult + radialComparisonResult)*100 / 3}%
-    `);
+    
+    if (nextPage) {
+        res.redirect(nextPage);
+    } else {
+        let barComparisonResult = req.body.bar_comparison === "Right" ? 1 : 0;
+        let lineComparisonResult = req.body.line_comparison === "Right" ? 1 : 0;
+        let radialComparisonResult = req.body.radial_comparison === "Right" ? 1 : 0;
+        res.send(`
+            Successful Submission! Thank you for participating in our experiment!\n\n
+            Your score: ${(barComparisonResult + lineComparisonResult + radialComparisonResult)*100 / 3}%
+        `);
+    }
 })
 
 app.listen(3000, () => {
