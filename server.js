@@ -3,6 +3,7 @@ import { MongoClient, ObjectId, Timestamp } from "mongodb";
 import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
+import session from "express-session";
 
 dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
@@ -11,13 +12,29 @@ const __dirname = path.dirname(__filename);
 const app = express();
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
+
+app.use(session({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {}
+}));
+
+app.use((req, res, next) => {
+    if (!req.session.userId) {
+        req.session.userId = new ObjectId();
+    }
+    if (!req.session.correctCount) {
+        req.session.correctCount = 0;
+    }
+    next();
+});
+
 app.use(express.static(path.join(__dirname, "public")));
 
 let client = new MongoClient(process.env.URI);
 await client.connect();
 let db = client.db("formDB");
-
-let userId = new ObjectId();
 
 // Correct Answers (used for calculating percentage correct at end of trial)
 let correctAnswers = {
@@ -43,9 +60,6 @@ let correctAnswers = {
     "1982": "Right",
 }
 
-
-// Keeps track of how many questions user got correct
-let correctCount = 0;
 
 // Keep track of average mean for each year
 let averages = {
@@ -105,7 +119,7 @@ app.post("/submit", async (req, res) => {
     delete req.body.next_page;
     req.body.year1Avg = averages[req.body.year1];
     req.body.year2Avg = averages[req.body.year2];
-    req.body.user_id = userId;
+    req.body.user_id = req.session.userId;
 
     let barCorrect = req.body.bar_comparison === correctAnswers[req.body.year1];
     let lineCorrect = req.body.line_comparison === correctAnswers[req.body.year1];
@@ -113,7 +127,7 @@ app.post("/submit", async (req, res) => {
     req.body.bar_result = barCorrect ? "Correct" : "Incorrect";
     req.body.line_result = lineCorrect ? "Correct" : "Incorrect";
     req.body.radial_result = radialCorrect ? "Correct" : "Incorrect";
-    correctCount += barCorrect + lineCorrect + radialCorrect;
+    req.session.correctCount += barCorrect + lineCorrect + radialCorrect;
 
     await db.collection("forms").insertOne(req.body);
 
@@ -124,7 +138,7 @@ app.post("/submit", async (req, res) => {
     } else {
         res.send(`
             Successful Submission! Thank you for participating in our experiment!\n\n
-            Your score: ${(correctCount)*100 / 60}%
+            Your score: ${(req.session.correctCount)*100 / 60}%
         `);
     }
 })
