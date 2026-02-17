@@ -31,8 +31,31 @@ print(read1900To2020Data)
 
 yearsList = [1900, 1902, 1904, 1906, 1908, 1910, 1912, 1914, 1916, 1918, 1920, 1922, 1924, 1926, 1928, 1930, 1932, 1934, 1936, 1938, 2020, 2018, 2016, 2014, 2012, 2010, 2008, 2006, 2004, 2002, 2000, 1998, 1996, 1994, 1992, 1990, 1988, 1986, 1984, 1982]
 
+noiseDict = {
+    "2020": 5,
+    "1902": -4,
+    "2016": 10,
+    "2014": 12,
+    "1908": -8,
+    "1910": -14,
+    "2008": 2,
+    "1904": -2,
+    "1918": -6,
+    "2000": 16,
+    "1922": -10,
+    "1924": -4,
+    "1926": -8,
+    "1992": 3,
+    "1988": 7,
+    "1986": -5,
+    "1984": -6,
+    "1938": 9
+}
+
 for singleYear in yearsList:
     filteredByYear = read1900To2020Data[read1900To2020Data["Year"] == singleYear]
+    if str(singleYear) in noiseDict:
+        filteredByYear["Value"] = filteredByYear["Value"] + noiseDict[str(singleYear)]
     # print(filteredByYear["Year"])
     # print(filteredByYear["Value"].mean())
     print("\n\n")
