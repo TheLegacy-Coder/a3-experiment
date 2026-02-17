@@ -39,7 +39,7 @@ noiseDict = {
     "1908": -8,
     "1910": -14,
     "2008": 2,
-    "1904": -2,
+    "1914": -2,
     "1918": -6,
     "2000": 16,
     "1922": -10,
@@ -56,7 +56,7 @@ for singleYear in yearsList:
     filteredByYear = read1900To2020Data[read1900To2020Data["Year"] == singleYear]
     if str(singleYear) in noiseDict:
         filteredByYear["Value"] = filteredByYear["Value"] + noiseDict[str(singleYear)]
-    # print(filteredByYear["Year"])
-    # print(filteredByYear["Value"].mean())
+    print(filteredByYear["Year"])
+    print(filteredByYear["Value"].mean())
     print("\n\n")
     filteredByYear.to_csv(f"public/csvFiles/temperature_data_{singleYear}.csv")
