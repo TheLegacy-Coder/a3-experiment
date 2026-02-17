@@ -1,5 +1,7 @@
-Assignment 3 - Replicating a Classic Experiment  
+Assignment 3 - Replicating a Classic Experiment 
 ===
+
+# Group Members: Klaudio Fusha & Ethan Shanbaum
 
 # Our Experiment: 
 Seeing if people can accurately estimate which chart (representing two distinct years) for each type has the highest average temperature. The different chart types include bar, line, and radial. Each chart will include monthly average temperature for its corresponding year.
