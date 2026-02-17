@@ -3,6 +3,7 @@ import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
 let year1Color = "#42903c";
 let year2Color = "#9b16c0";
+let range = [10, 95]
 
 let year1 = document.getElementById("year1").value;
 let year2 = document.getElementById("year2").value;
@@ -34,7 +35,7 @@ const renderBarChart = (color, year, data) => {
             .style("text-anchor", "end");
 
     const yAxis = d3.scaleLinear()
-        .domain([20, 85])
+        .domain(range)
         .range([500, 0]);
     barContainer.append("g")
         .call(d3.axisLeft(yAxis));
@@ -99,7 +100,7 @@ const renderLineChart = (color, year, data) => {
             .style("text-anchor", "end");
 
     const yAxis = d3.scaleLinear()
-        .domain([20, 85])
+        .domain(range)
         .range([500, 0]);
     lineContainerSVG.append("g")
         .call(d3.axisLeft(yAxis));
@@ -154,7 +155,7 @@ const renderRadialChart = (color, year, data) => {
 
     const y =  d3.scaleRadial()
         .range([innerRadius, outerRadius])   // Domain will be define later.
-        .domain([20, 80]);
+        .domain(range);
 
     const radialContainer = d3.select(`#radial_${year}`)
         .append("svg")
@@ -195,7 +196,7 @@ const renderRadialChart = (color, year, data) => {
     radialContainer.append("g")
         .attr("transform", "translate(385,350)")
         .selectAll("circle")
-        .data(d3.range(20, 80, 5))
+        .data(d3.range(10, 95, 5))
         .enter()
             .append("circle")
                 .attr("fill", "none")
@@ -206,7 +207,7 @@ const renderRadialChart = (color, year, data) => {
     // Docs used for getBBox: https://developer.mozilla.org/en-US/docs/Web/API/SVGGraphicsElement/getBBox
     radialContainer.append("g")
         .attr("transform", "translate(385,350)")
-        .call(yAxis.ticks(6))
+        .call(yAxis.ticks(8))
         .selectAll("text")
             .style("font-size", "12px")
             .each(function() {
