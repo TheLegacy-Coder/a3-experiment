@@ -22,25 +22,25 @@ let userId = new ObjectId();
 // Correct Answers (used for calculating percentage correct at end of trial)
 let correctAnswers = {
     "1900": "Right",
-    "1902": "Right",
+    "2018": "Left",
     "1904": "Right",
     "1906": "Right",
-    "1908": "Right",
-    "1910": "Right",
+    "2012": "Left",
+    "2010": "Left",
     "1912": "Right",
     "1914": "Right",
-    "1916": "Right",
+    "2004": "Left",
     "1918": "Right",
-    "1920": "Right",
+    "2000": "Left",
     "1922": "Right",
-    "1924": "Right",
+    "1996": "Left",
     "1926": "Right",
-    "1928": "Right",
+    "1992": "Left",
     "1930": "Right",
-    "1932": "Right",
+    "1988": "Left",
     "1934": "Left",
     "1936": "Left",
-    "1938": "Left",
+    "1982": "Right",
 }
 
 
@@ -50,25 +50,25 @@ let correctCount = 0;
 // Keep track of average mean for each year
 let averages = {
     "1900": 52.76, "2020": 59.36,
-    "1902": 47.57, "2018": 53.51,
+    "1902": 47.57, "2018": 53.51, // swap
     "1904": 51.14, "2016": 64.90,
     "1906": 51.71, "2014": 64.53,
-    "1908": 44.07, "2012": 55.27,
-    "1910": 38.41, "2010": 52.98,
+    "1908": 44.07, "2012": 55.27, // swap
+    "1910": 38.41, "2010": 52.98, // swap
     "1912": 50.22, "2008": 54.28,
     "1914": 49.83, "2006": 54.24,
-    "1916": 50.84, "2004": 53.08,
+    "1916": 50.84, "2004": 53.08, //swap
     "1918": 45.85, "2002": 53.20,
-    "1920": 51.07, "2000": 69.25,
+    "1920": 51.07, "2000": 69.25, // swap
     "1922": 42.02, "1998": 54.22,
-    "1924": 46.57, "1996": 51.88,
+    "1924": 46.57, "1996": 51.88, // swap
     "1926": 43.94, "1994": 52.85,
-    "1928": 51.91, "1992": 52.59,
+    "1928": 51.91, "1992": 52.59, // swap
     "1930": 51.97, "1990": 53.50,
-    "1932": 51.72, "1988": 52.62,
+    "1932": 51.72, "1988": 52.62, // swap
     "1934": 54.09, "1986": 53.31,
     "1936": 52.14, "1984": 51.97,
-    "1938": 62.17, "1982": 51.33,
+    "1938": 62.17, "1982": 51.33, // swap
 }
 
 // 1900: 52.76    2020: 54.36  R    -> 2020 +5
@@ -122,10 +122,6 @@ app.post("/submit", async (req, res) => {
     if (nextPage) {
         res.redirect(nextPage);
     } else {
-        // Change this
-        let barComparisonResult = req.body.bar_comparison === "Right" ? 1 : 0;
-        let lineComparisonResult = req.body.line_comparison === "Right" ? 1 : 0;
-        let radialComparisonResult = req.body.radial_comparison === "Right" ? 1 : 0;
         res.send(`
             Successful Submission! Thank you for participating in our experiment!\n\n
             Your score: ${(correctCount)*100 / 60}%
