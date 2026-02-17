@@ -1,19 +1,16 @@
 Assignment 3 - Replicating a Classic Experiment  
 ===
 
-# Our Experiment:
-
+# Our Experiment: 
 Seeing if people can accurately estimate which chart (representing two distinct years) for each type has the highest average temperature. The different chart types include bar, line, and radial. Each chart will include monthly average temperature for its corresponding year.
-===
+
 
 # Vercel Link to Experiment
+- https://kf-es-a3-experiment.vercel.app/
 
-https://kf-es-a3-experiment.vercel.app/
 
 # Data source:
-
-https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/national/time-series/110/tavg/3/8/1895-2023?base_prd=true&begbaseyear=1901&endbaseyear=2000&trend=true&trend_base=100&begtrendyear=1895&endtrendyear=2023
-===
+- https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/national/time-series/110/tavg/3/8/1895-2023?base_prd=true&begbaseyear=1901&endbaseyear=2000&trend=true&trend_base=100&begtrendyear=1895&endtrendyear=2023
 
 # Tech achievements:
 1. Implemented a radial chart
@@ -21,13 +18,11 @@ https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/national/time-se
 3. Implemented color pickers for each chart
 4. Created an SVG loading function to automatically render charts based on the year
 5. Created a Python script to process the original CSV data into separate CSVs for each year
-===
 
 # Design achievements:
 1. For each year pair, we contained all corresponding charts within a single HTML page. This allows for easier comparisons
 2. Within each HTML page, we sectioned off the different chart comparisons using horizontal lines to prevent confusion
 3. The color pickers allow the user to change the chart elements (bars, lines, radial sections) to whichever color they would like for ease of comparison
-===
 
 # References:
 - https://d3-graph-gallery.com/graph/barplot_basic.html
@@ -37,7 +32,6 @@ https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/national/time-se
 - https://developer.mozilla.org/en-US/docs/Web/API/SVGGraphicsElement/getBBox
 - https://stackoverflow.com/questions/39217347/how-to-split-number-to-separate-columns-in-pandas-dataframe
 - https://pandas.pydata.org/docs/reference/api/pandas.Series.map.html
-===
 
 For the scope of this project, assume the role of a scientist who runs experiments for a living.
 
