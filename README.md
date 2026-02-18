@@ -12,7 +12,7 @@ Seeing if people can accurately estimate which chart (representing two distinct 
 
 
 # Data source:
-- https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/national/time-series/110/tavg/3/8/1895-2023?base_prd=true&begbaseyear=1901&endbaseyear=2000&trend=true&trend_base=100&begtrendyear=1895&endtrendyear=2023
+- NOAA National Centers for Environmental information, Climate at a Glance: National Time Series, published February 2026, retrieved on February 9, 2026 from https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/national/time-series
 
 # Tech achievements:
 1. Implemented a radial chart
@@ -35,6 +35,25 @@ Seeing if people can accurately estimate which chart (representing two distinct 
 - https://stackoverflow.com/questions/39217347/how-to-split-number-to-separate-columns-in-pandas-dataframe
 - https://pandas.pydata.org/docs/reference/api/pandas.Series.map.html
 
+# Data Analysis:
+Raw results CSV: [will insert later]
+
+**Potential reference for analysis (i.e., if we want to tie our observations with known trends): https://vispubs.com/?searchText=biased+average&paper=10.1109/TVCG.2019.2934400
+
+Per-user results:
+
+- .
+- .
+
+Chart-based results:
+- For bar charts, we noticed...
+- For line charts, we noticed...
+- For radial charts, we noticed...
+
+Year-based results:
+- For [blank] year, we noticed...
+
+---
 For the scope of this project, assume the role of a scientist who runs experiments for a living.
 
 For example: 
