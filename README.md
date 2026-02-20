@@ -6,6 +6,10 @@ Assignment 3 - Replicating a Classic Experiment
 # Our Experiment: 
 Seeing if people can accurately estimate which chart (representing two distinct years) for each type has the highest average temperature. The different chart types include bar, line, and radial. Each chart will include monthly average temperature for its corresponding year.
 
+![img1](img/page1-1.png)
+![img2](img/page1-2.png)
+![img3](img/page1-3.png)
+
 
 # Vercel Link to Experiment
 - https://kf-es-a3-experiment.vercel.app/
@@ -25,6 +29,7 @@ Seeing if people can accurately estimate which chart (representing two distinct 
 1. For each year pair, we contained all corresponding charts within a single HTML page. This allows for easier comparisons
 2. Within each HTML page, we sectioned off the different chart comparisons using horizontal lines to prevent confusion
 3. The color pickers allow the user to change the chart elements (bars, lines, radial sections) to whichever color they would like for ease of comparison
+4. The page number at the top of each individual HTML page prevents confusion when the user submits their results, making it clear they are on a new page
 
 # References:
 - https://d3-graph-gallery.com/graph/barplot_basic.html
@@ -34,24 +39,42 @@ Seeing if people can accurately estimate which chart (representing two distinct 
 - https://developer.mozilla.org/en-US/docs/Web/API/SVGGraphicsElement/getBBox
 - https://stackoverflow.com/questions/39217347/how-to-split-number-to-separate-columns-in-pandas-dataframe
 - https://pandas.pydata.org/docs/reference/api/pandas.Series.map.html
+- https://www.mongodb.com/docs/manual/reference/operator/update/set/
+- https://expressjs.com/en/resources/middleware/session.html
 
 # Data Analysis:
-Raw results CSV: [will insert later]
+The raw results can be found in __raw_results.csv__
 
-**Potential reference for analysis (i.e., if we want to tie our observations with known trends): https://vispubs.com/?searchText=biased+average&paper=10.1109/TVCG.2019.2934400
+__User-based results:__
 
-Per-user results:
+![user_img](img/per-user.png)
 
-- .
-- .
+Across all the users who participated in the experiment, the vast majority of them scored about 90% in terms of correctness when picking the charts with the highest averages. However, there are some outliers. For example, some users did not complete the experiment from start to finish. Three users only answered 3 questions total (equates to 1 page of charts), one user only answered 27 questions total (9 pages), another 39 questions total (13 pages), and lastly one user only answered 57 questions (19 pages). This means that only 12 or 13 out of 18 responses can be considered complete, but all responses will be included in the data analysis.
 
-Chart-based results:
-- For bar charts, we noticed...
-- For line charts, we noticed...
-- For radial charts, we noticed...
+__Chart-based results:__
 
-Year-based results:
-- For [blank] year, we noticed...
+![chart-img](img/per-chart.png)
+
+- For bar charts, we noticed out of 284 individual responses where each response has the answers for each bar type for a single page, only 268 were correct for the bar chart comparison. This equates to approximately 94.37%.
+- For line charts, we noticed out of 284 individual responses where each response has the answers for each line type for a single page, only 262 were correct for the line chart comparison. This equates to approximately 92.25%.
+
+- For radial charts, we noticed out of 284 individual responses where each response has the answers for each radial type for a single page, only 270 were correct for the radial chart comparison. This equates to approximately 95.07%.
+
+Looking at the three chart types, the radial chart has the highest accuracy. On the contrary, the line chart has the lowest accuracy. However, it is important to note that these differences between the accuracies are only marginal, which suggests that one who may want to convey data and have people pick up on trends could use these charts interchangeably. Further investigation would possibly yield more results.
+
+__Year-based results:__
+
+![year-img](img/per-year.png)
+
+Looking at the above data for the year pairings, users got almost all of them perfectly correct. The only year pairings that stand out are 2004-1916, 1934-1986, 1900-2000, 1992-1928, 1930-1990, 1914-2006, and 1912-2008. From these pairings, 2004-1916 and 1930-1990 in particular are the worst, with ~59.52% and ~62.22% correct, respectively.
+
+![avg-img](img/year-averages.png)
+
+Looking at the averages for those two particular year pairings, they are very close. This means that it might have been really difficult for half of the users to properly determine which year had the highest average temperature. Hence, a difference of about 3 or lower between the averages could make it more difficult to pick the correct answer.
+
+__Conclusion:__
+
+Given the data collected from 18 participants, we conclude that although there are marginal differences in accuracy in predicting averages for the 3 different chart types, this could be explained with a low sample size. More data should be collected to see which chart types are most effective at conveying averages to the user. We also note that perceiving differences in averages becomes difficult when the averages are close together. Therefore, in instances when you want to show differences in close averages, providing the number would be more effective than having the user interpret the average from a chart.
 
 ---
 For the scope of this project, assume the role of a scientist who runs experiments for a living.
@@ -120,35 +143,6 @@ Requirements
 - Concise description and screenshot of your experiment.
 - Description of the technical achievements you attempted with this project.
 - Description of the design achievements you attempted with this project.
-
-Background
----
-
-In 1984, William Cleveland and Robert McGill published the results of several controlled experiments that pitted bar charts against pies and stacked-bar variants. 
-Their paper (http://www.cs.ubc.ca/~tmm/courses/cpsc533c-04-spr/readings/cleveland.pdf) (http://info.slis.indiana.edu/~katy/S637-S11/cleveland84.pdf) is considered a key paper in data visualization.
-In particular, they ran a psychology-style experiment where users were shown a series of randomly-generated charts with two graphical elements marked like this:
-
-![cleveland bar chart](img/cleveland-bar.png)
-
-Participants were then asked, "What percentage is the smaller of the larger?". 
-This was repeated hundreds of time with varying data and charts. 
-By the end of the study, Cleveland and McGill had amassed a large dataset that looked like this:
-
-![cleveland table](img/cleveland-table.png)
-
-__Log-base-2 or "cm-error"__: The true percent is the actual percentage of the smaller to the larger, while the reported percent is what participants reported. 
-Cleveland and McGill recognized that their analyses would be biased if they took `abs(ReportedPercent – TruePercent)` as their score for error. 
-To compensate, they came up with a logarithmic scale for error with this equation:
-
-![cleveland equation](img/cleveland-equation.png)
-
-You’ll be implementing this error score as part of the lab. 
-(Hint: it’s not a trick question, this is just to familiarize you with the experiment protocol). 
-With this Cleveland-McGill error score you can better compare the performance of the charts you test to figure out which one performs the best.
-
-As a baseline, compare your average Error scores to the following chart, which include both Cleveland and McGill’s results as well as more recent extensions of this experiment (lower error indicates better performance, and error bars are bootstrapped 95% confidence intervals (`http://en.wikipedia.org/wiki/Confidence_interval#Meaning_and_interpretation`)):
-
-![cleveland results](img/cleveland-results.png)
 
 GitHub Details
 ---

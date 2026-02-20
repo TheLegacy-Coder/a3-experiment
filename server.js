@@ -13,6 +13,7 @@ const app = express();
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
+// Docs used for getting session-specific: https://expressjs.com/en/resources/middleware/session.html
 app.use(session({
     secret: "secret",
     resave: false,
@@ -77,11 +78,11 @@ let averages = {
     "1922": 42.02, "1998": 54.22,
     "1924": 46.57, "1996": 51.88, // swap
     "1926": 43.94, "1994": 52.85,
-    "1928": 51.91, "1992": 52.59, // swap
+    "1928": 51.91, "1992": 55.59, // swap /////
     "1930": 51.97, "1990": 53.50,
-    "1932": 51.72, "1988": 52.62, // swap
-    "1934": 54.09, "1986": 53.31,
-    "1936": 52.14, "1984": 51.97,
+    "1932": 51.72, "1988": 59.62, // swap //////
+    "1934": 54.09, "1986": 48.31, //////
+    "1936": 52.14, "1984": 45.97, //////
     "1938": 62.17, "1982": 51.33, // swap
 }
 
